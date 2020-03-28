@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">  
+ 
+	<h:head>  
+ 		<title>Bowling game</title>
+	</h:head>  
+      
+	<h:body>  
+		<h:form>  
+			<p:panel id="buttons">
+				<c:forEach begin="0" end="#{viewBean.possiblePoints}"  varStatus="loop">
+		  				<p:commandButton value="#{loop.index}" action="#{viewBean.addRoll(loop.index)}" 
+		  								 update="buttons rollInfo scoreTable"/>
+				</c:forEach>
+			</p:panel>
+			
+			<h:panelGrid id = "rollInfo" columns = "2" cellpadding = "10" >
+				<p:outputLabel for="@next" value="Last roll:"/>
+				<p:outputLabel id="roll" value="#{viewBean.roll}"/>
+			</h:panelGrid>
+			
+			<p:dataTable id="scoreTable" var="frame" value="#{viewBean.frames}">
+						
+			    <p:column headerText="Roll One">
+			        <h:outputText value="#{frame.firstRoll}" />
+			    </p:column>
+			 
+			    <p:column headerText="Roll Two">
+			        <h:outputText value="#{frame.secondRoll}" />
+			    </p:column>
+			 
+			    <p:column headerText="Score">
+			        <h:outputText value="#{frame.score}" />
+			    </p:column>
+			</p:dataTable>			
+			
+		</h:form>
+	</h:body>  
+</html>
