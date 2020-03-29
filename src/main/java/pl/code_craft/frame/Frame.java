@@ -15,16 +15,16 @@ public class Frame {
 		score = null;
 	}
 
-	public boolean isClosed() {
-		return (isStrike() || secondRoll != null);
-	}
-
 	public boolean isStrike() {
 		return (firstRoll != null && firstRoll == 10);
 	}
 
 	public boolean isSpare() {
 		return (firstRoll != null && secondRoll != null && firstRoll + secondRoll == 10);
+	}
+
+	public boolean isClosed() {
+		return (isStrike() || secondRoll != null);
 	}
 
 	public boolean isFullPointer() {
@@ -34,14 +34,16 @@ public class Frame {
 		return false;
 	}
 
-	public void addRoll(Integer roll) {
+	public void addRoll(Integer roll) throws IllegalStateException {
 		if (firstRoll == null) {
 			firstRoll = roll;
 			return;
 		}
 		if (!isClosed()) {
 			secondRoll = roll;
+			return;
 		}
+		throw new IllegalStateException("Can not add roll to a closed frame.");
 	}
 
 	public Integer getScore() {

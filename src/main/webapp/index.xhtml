@@ -25,15 +25,15 @@
 			<p:dataTable id="scoreTable" var="frame" value="#{viewBean.frames}">
 						
 			    <p:column headerText="Roll One">
-			        <h:outputText value="#{frame.firstRoll}" />
+			        <p:outputLabel value="#{frame.firstRoll}" />
 			    </p:column>
 			 
 			    <p:column headerText="Roll Two">
-			        <h:outputText value="#{frame.secondRoll}" />
+			        <p:outputLabel value="#{frame.secondRoll}" />
 			    </p:column>
 			 
 			    <p:column headerText="Score">
-			        <h:outputText value="#{frame.score}" />
+			        <p:outputLabel value="#{frame.score}" />
 			    </p:column>
 			</p:dataTable>			
 			
