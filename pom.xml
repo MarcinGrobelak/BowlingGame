@@ -1,8 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">	
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-  
 	<groupId>pl.code-craft</groupId>
 	<artifactId>Bowling</artifactId>
 	<packaging>war</packaging>
@@ -27,9 +28,9 @@
 			<version>2.2.0-m07</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.primefaces</groupId>
-		    <artifactId>primefaces</artifactId>
-	    	<version>8.0</version>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>8.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -61,11 +62,16 @@
 			<version>2.2</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.jboss.weld</groupId>
+			<artifactId>weld-junit5</artifactId>
+			<version>2.0.1.Final</version>
+		</dependency>
 	</dependencies>
 	
 	<build>
 		<plugins>
-			<plugin> 
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
@@ -74,6 +80,6 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-		 </plugins>
+		</plugins>
 	</build>
 </project>
