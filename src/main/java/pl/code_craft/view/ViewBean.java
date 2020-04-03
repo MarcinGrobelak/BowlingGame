@@ -1,6 +1,3 @@
-/**
- * 
- */
 package pl.code_craft.view;
 
 import java.io.Serializable;

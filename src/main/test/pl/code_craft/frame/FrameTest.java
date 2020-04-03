@@ -133,7 +133,7 @@ class FrameTest {
 		assertFalse(frame.isFullPointer());
 	}
 
-	static List<Arguments> possiblePairsWithSumLessThanTen() {
+	private static List<Arguments> possiblePairsWithSumLessThanTen() {
 		List<Arguments> args = new ArrayList<>();
 		for (int i = 0; i <= 9; i++) {
 			for (int j = 0; j <= 9; j++) {
@@ -169,5 +169,4 @@ class FrameTest {
 		assertNotNull(frame.getSumOfRolles());
 		assertEquals(3, frame.getSumOfRolles());
 	}
-
 }
