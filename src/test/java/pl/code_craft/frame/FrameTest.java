@@ -169,4 +169,37 @@ class FrameTest {
 		assertNotNull(frame.getSumOfRolles());
 		assertEquals(3, frame.getSumOfRolles());
 	}
+
+	@Test
+	void labelShouldBeXWhenStrike() {
+		// when
+		frame.addRoll(10);
+		// then
+		assertEquals("X", frame.getSecondRollLabel());
+	}
+
+	@Test
+	void labelShouldBeSlashWhenSpare() {
+		// when
+		frame.addRoll(5);
+		frame.addRoll(5);
+		// then
+		assertEquals("/", frame.getSecondRollLabel());
+	}
+
+	@Test
+	void labelShouldBeSecondFrameValueWhenSecondFrameNotNull() {
+		// when
+		frame.addRoll(1);
+		frame.addRoll(2);
+		// then
+		assertEquals("2", frame.getSecondRollLabel());
+	}
+
+	@Test
+	void labelShouldBeEmptyStringWhenSecondFrameIsNull() {
+		// then
+		assertEquals("", frame.getSecondRollLabel());
+	}
+
 }

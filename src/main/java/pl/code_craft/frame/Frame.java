@@ -16,7 +16,7 @@ public class Frame {
 	}
 
 	public boolean isStrike() {
-		return (firstRoll == 10);
+		return (firstRoll != null && firstRoll == 10);
 	}
 
 	public boolean isSpare() {
@@ -67,6 +67,19 @@ public class Frame {
 			return firstRoll + secondRoll;
 		}
 		return null;
+	}
+
+	public String getSecondRollLabel() {
+		if (isStrike()) {
+			return "X";
+		}
+		if (isSpare()) {
+			return "/";
+		}
+		if (secondRoll != null) {
+			return String.valueOf(secondRoll);
+		}
+		return "";
 	}
 
 }

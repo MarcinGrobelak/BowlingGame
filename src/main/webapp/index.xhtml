@@ -2,7 +2,7 @@
 	xmlns:h="http://java.sun.com/jsf/html" 
 	xmlns:f="http://java.sun.com/jsf/core" 
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">  
+	xmlns:c="http://java.sun.com/jsp/jstl/core">  
  
 	<h:head>  
  		<title>Bowling game</title>
@@ -10,8 +10,14 @@
       
 	<h:body>  
 		<h:form>  
-			<p:panel id="buttons">
-
+			<p:panel id="buttons" rendered="#{not viewBean.gameOver}">
+				<c:forEach begin="0" end="#{viewBean.possiblePoints}"  varStatus="loop">
+		  				<p:commandButton value="#{loop.index}" action="#{viewBean.addRoll(loop.index)}" 
+		  								 update="buttons rollInfo scoreTable gameOver"/>
+				</c:forEach>
+			</p:panel>
+			<p:panel id="gameOver" rendered="#{viewBean.gameOver}">
+				<p:outputLabel for="@next" value="Overall score: #{viewBean.overallScore}"/>
 			</p:panel>
 			
 			<h:panelGrid id = "rollInfo" columns = "2" cellpadding = "10" >
@@ -26,13 +32,14 @@
 			    </p:column>
 			 
 			    <p:column headerText="Roll Two">
-			        <p:outputLabel value="#{frame.secondRoll}" />
+			        <p:outputLabel value="#{frame.secondRollLabel}" />
 			    </p:column>
 			 
 			    <p:column headerText="Score">
 			        <p:outputLabel value="#{frame.score}" />
 			    </p:column>
 			</p:dataTable>			
+			
 		</h:form>
 	</h:body>  
 </html>

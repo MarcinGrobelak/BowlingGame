@@ -25,7 +25,7 @@ public class ScoreService {
 			if (frames.size() >= 3) {
 				Frame antepenultimate = frames.get(index - 2);
 
-				if (antepenultimate.isFullPointer() && previous.isFullPointer()) {
+				if (antepenultimate.isStrike() && previous.isStrike()) {
 					if (last.isStrike()) {
 						antepenultimate.setScore(30);
 						return;

@@ -26,6 +26,7 @@ public class ViewBean implements Serializable {
 	private int possiblePoints;
 	private List<Frame> frames;
 	private Frame currentFrame;
+	boolean gameOver;
 
 	@PostConstruct
 	private void init() {
@@ -33,6 +34,7 @@ public class ViewBean implements Serializable {
 		currentFrame = new Frame();
 		frames.add(currentFrame);
 		possiblePoints = 10;
+		gameOver = false;
 	}
 
 	@PreDestroy
@@ -56,13 +58,16 @@ public class ViewBean implements Serializable {
 		}
 
 		currentFrame.addRoll(roll);
+		ScoreService.setScore(frames);
 
 		if (currentFrame.isClosed()) {
-			ScoreService.setScore(frames);
+			if (frames.size() == 10) {
+				gameOver = true;
+			}
+
 			possiblePoints = 10;
 			return;
 		}
-
 		possiblePoints = 10 - roll;
 	}
 
@@ -72,5 +77,17 @@ public class ViewBean implements Serializable {
 
 	public List<Frame> getFrames() {
 		return frames;
+	}
+
+	public boolean isGameOver() {
+		return gameOver;
+	}
+
+	public int getOverallScore() {
+		int sum = 0;
+		for (Frame frame : frames) {
+			sum += frame.getScore();
+		}
+		return sum;
 	}
 }
