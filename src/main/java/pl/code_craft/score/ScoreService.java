@@ -16,7 +16,7 @@ public class ScoreService {
 		Frame last = frames.get(index);
 
 		if (!last.isFullPointer()) {
-			last.setScore(last.getSumOfRolles());
+			last.setScore(last.getSumOfRolls());
 		}
 
 		if (frames.size() >= 2) {
@@ -32,17 +32,22 @@ public class ScoreService {
 					}
 
 					antepenultimate.setScore(20 + last.getFirstRoll());
-					if (last.getSumOfRolles() != null) {
-						previous.setScore(10 + last.getSumOfRolles());
+					if (last.getSumOfRolls() != null) {
+						previous.setScore(10 + last.getSumOfRolls());
 					}
 					return;
 				}
 			}
 
 			if (previous.isStrike() && !last.isStrike()) {
-				if (last.getSumOfRolles() != null) {
-					previous.setScore(10 + last.getSumOfRolles());
+				if (last.getSumOfRolls() != null) {
+					previous.setScore(10 + last.getSumOfRolls());
 				}
+				return;
+			}
+
+			if (previous.isSpare() && last.isStrike()) {
+				previous.setScore(20);
 				return;
 			}
 
@@ -51,8 +56,15 @@ public class ScoreService {
 				return;
 			}
 
-			if (previous.isSpare() && last.isFullPointer()) {
-				previous.setScore(20);
+			if (index == 9) {
+				if (previous.isStrike() && last.isClosed()) {
+					previous.setScore(10 + last.getSumOfRolls());
+				}
+
+				if (last.isClosed()) {
+					last.setScore(last.getSumOfRolls());
+				}
+
 			}
 		}
 	}

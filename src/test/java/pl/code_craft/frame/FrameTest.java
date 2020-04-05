@@ -21,11 +21,11 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 class FrameTest {
 
-	private Frame frame;
+	private RegularFrame frame;
 
 	@BeforeEach
 	void initializeFrame() {
-		frame = new Frame();
+		frame = new RegularFrame();
 	}
 
 	@Test
@@ -148,7 +148,7 @@ class FrameTest {
 	@Test
 	void sumeOfRollsReturnsNullIfFirstRollIsNull() {
 		assertNull(frame.getFirstRoll());
-		assertNull(frame.getSumOfRolles());
+		assertNull(frame.getSumOfRolls());
 	}
 
 	@Test
@@ -157,7 +157,7 @@ class FrameTest {
 		frame.addRoll(1);
 		// then
 		assertNull(frame.getSecondRoll());
-		assertNull(frame.getSumOfRolles());
+		assertNull(frame.getSumOfRolls());
 	}
 
 	@Test
@@ -166,8 +166,8 @@ class FrameTest {
 		frame.addRoll(1);
 		frame.addRoll(2);
 		// then
-		assertNotNull(frame.getSumOfRolles());
-		assertEquals(3, frame.getSumOfRolles());
+		assertNotNull(frame.getSumOfRolls());
+		assertEquals(3, frame.getSumOfRolls());
 	}
 
 	@Test

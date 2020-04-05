@@ -9,7 +9,9 @@ import javax.annotation.PreDestroy;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import pl.code_craft.frame.FinalFrame;
 import pl.code_craft.frame.Frame;
+import pl.code_craft.frame.RegularFrame;
 import pl.code_craft.score.ScoreService;
 
 /**
@@ -22,8 +24,7 @@ public class ViewBean implements Serializable {
 
 	private static final long serialVersionUID = -4273338410365761268L;
 
-	private int roll;
-	private int possiblePoints;
+	private int pointsToScore;
 	private List<Frame> frames;
 	private Frame currentFrame;
 	boolean gameOver;
@@ -31,14 +32,14 @@ public class ViewBean implements Serializable {
 	@PostConstruct
 	private void init() {
 		frames = new ArrayList<>();
-		currentFrame = new Frame();
+		currentFrame = new RegularFrame();
 		frames.add(currentFrame);
-		possiblePoints = 10;
+		pointsToScore = 10;
 		gameOver = false;
 	}
 
 	@PreDestroy
-	private void destroy() {
+	public void destroy() {
 		if (frames != null) {
 			frames.clear();
 			frames = null;
@@ -46,33 +47,38 @@ public class ViewBean implements Serializable {
 		currentFrame = null;
 	}
 
-	public int getRoll() {
-		return roll;
-	}
-
-	public void addRoll(int roll) {
-		this.roll = roll;
+	public void roll(int roll) {
 		if (currentFrame.isClosed()) {
-			currentFrame = new Frame();
-			frames.add(currentFrame);
+			addFrame();
 		}
 
 		currentFrame.addRoll(roll);
 		ScoreService.setScore(frames);
 
-		if (currentFrame.isClosed()) {
-			if (frames.size() == 10) {
+		if (isFinalFrame()) {
+			if (currentFrame.isClosed()) {
 				gameOver = true;
+				return;
 			}
+			if (currentFrame.isFullPointer()) {
+				pointsToScore = 10;
+				return;
+			}
+		}
 
-			possiblePoints = 10;
+		if (currentFrame.isClosed()) {
+			pointsToScore = 10;
 			return;
 		}
-		possiblePoints = 10 - roll;
+		pointsToScore = 10 - roll;
 	}
 
 	public int getPossiblePoints() {
-		return possiblePoints;
+		return pointsToScore;
+	}
+
+	public Frame getCurrentFrame() {
+		return currentFrame;
 	}
 
 	public List<Frame> getFrames() {
@@ -86,8 +92,28 @@ public class ViewBean implements Serializable {
 	public int getOverallScore() {
 		int sum = 0;
 		for (Frame frame : frames) {
-			sum += frame.getScore();
+			if (frame.getScore() != null) {
+				sum += frame.getScore();
+			}
 		}
 		return sum;
+	}
+
+	private void addFrame() {
+		if (!gameOver) {
+			currentFrame = createFrame();
+			frames.add(currentFrame);
+		}
+	}
+
+	private Frame createFrame() {
+		if (frames.size() == 9) {
+			return new FinalFrame();
+		}
+		return new RegularFrame();
+	}
+
+	private boolean isFinalFrame() {
+		return frames.size() == 10;
 	}
 }

@@ -10,19 +10,20 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import pl.code_craft.frame.Frame;
+import pl.code_craft.frame.RegularFrame;
 
 public class ScoreServiceTest {
 	private List<Frame> frames;
-	private Frame first;
-	private Frame second;
-	private Frame third;
+	private RegularFrame first;
+	private RegularFrame second;
+	private RegularFrame third;
 
 	@BeforeEach
 	void initializeTest() {
 		frames = new ArrayList<>();
-		first = new Frame();
-		second = new Frame();
-		third = new Frame();
+		first = new RegularFrame();
+		second = new RegularFrame();
+		third = new RegularFrame();
 	}
 
 	private void createThreeFramesList() {
