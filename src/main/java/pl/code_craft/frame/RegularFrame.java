@@ -72,7 +72,14 @@ public class RegularFrame implements Frame {
 		return null;
 	}
 
-	public String getSecondRollLabel() {
+	public String getFirstRollAsString() {
+		if (firstRoll != null) {
+			return String.valueOf(firstRoll);
+		}
+		return "";
+	}
+
+	public String getSecondRollAsString() {
 		if (isStrike()) {
 			return "X";
 		}

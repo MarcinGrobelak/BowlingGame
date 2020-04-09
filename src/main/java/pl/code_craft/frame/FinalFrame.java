@@ -31,7 +31,7 @@ public class FinalFrame extends RegularFrame {
 		if (firstRoll != null && secondRoll != null && thirdRoll != null) {
 			return firstRoll + secondRoll + thirdRoll;
 		}
-		if (firstRoll != null && secondRoll != null && !isFullPointer()) {
+		if (firstRoll != null && secondRoll != null) {
 			return firstRoll + secondRoll;
 		}
 		return null;
@@ -44,5 +44,32 @@ public class FinalFrame extends RegularFrame {
 	@Override
 	public boolean isFinal() {
 		return true;
+	}
+
+	@Override
+	public String getFirstRollAsString() {
+		return translateRoll(firstRoll);
+	}
+
+	@Override
+	public String getSecondRollAsString() {
+		if (isSpare()) {
+			return "/";
+		}
+		return translateRoll(secondRoll);
+	}
+
+	public String getThirdRollAsString() {
+		return translateRoll(thirdRoll);
+	}
+
+	private String translateRoll(Integer roll) {
+		if (roll == null) {
+			return "";
+		}
+		if (roll == 10) {
+			return "X";
+		}
+		return String.valueOf(roll);
 	}
 }

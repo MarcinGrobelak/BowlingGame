@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.ui-button {
+	margin: 0.5rem 0.5rem;
+	padding: 0.5rem 1rem;
+}
+
+.ui-panel-titlebar {
+	display: flex;
+	justify-content: center;
+}
+
+.ui-panel .ui-panel-title {
+	margin: 0;
+}
+
+.ui-widget-header, 
+.ui-widget-content .ui-button,  
+.ui-datagrid-column .ui-widget-content{	
+	background: none;
+	border: 1px solid #732C7B;
+	font-family: 'Nunito';
+	font-size: 1.3rem;
+	color: #732C7B;
+	
+}
+
+.ui-widget-content {
+	border: 0;
+}
+
+.ui-widget{
+	font-family: 'Nunito';
+}
+.ui-corner-all{
+	 border-radius:0px;
+}
+
+.roundPanel{
+	display: flex;
+	justify-content: center;
+}
+
+.scoreLabel {
+	flex-grow: 1;
+}
+
+.ui-datagrid-column,
+.welcomeLabel {
+	margin-top: 1rem;
+	margin-left: 1rem;
+}
+
+.overallLabel{
+	margin-left: 1rem;
+}
+
+.label {
+	display: inline-block;
+	color: #732C7B;
+	font-size: 2rem;
+}

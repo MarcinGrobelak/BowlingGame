@@ -58,6 +58,7 @@ public class ViewBean implements Serializable {
 		if (isFinalFrame()) {
 			if (currentFrame.isClosed()) {
 				gameOver = true;
+				pointsToScore = 10;
 				return;
 			}
 			if (currentFrame.isFullPointer()) {

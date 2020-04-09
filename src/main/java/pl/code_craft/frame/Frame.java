@@ -17,6 +17,8 @@ public interface Frame {
 
 	public Integer getFirstRoll();
 
+	public Integer getSecondRoll();
+
 	public Integer getSumOfRolls();
 
 	public boolean isFinal();

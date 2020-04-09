@@ -175,7 +175,7 @@ class FrameTest {
 		// when
 		frame.addRoll(10);
 		// then
-		assertEquals("X", frame.getSecondRollLabel());
+		assertEquals("X", frame.getSecondRollAsString());
 	}
 
 	@Test
@@ -184,7 +184,7 @@ class FrameTest {
 		frame.addRoll(5);
 		frame.addRoll(5);
 		// then
-		assertEquals("/", frame.getSecondRollLabel());
+		assertEquals("/", frame.getSecondRollAsString());
 	}
 
 	@Test
@@ -193,13 +193,13 @@ class FrameTest {
 		frame.addRoll(1);
 		frame.addRoll(2);
 		// then
-		assertEquals("2", frame.getSecondRollLabel());
+		assertEquals("2", frame.getSecondRollAsString());
 	}
 
 	@Test
 	void labelShouldBeEmptyStringWhenSecondFrameIsNull() {
 		// then
-		assertEquals("", frame.getSecondRollLabel());
+		assertEquals("", frame.getSecondRollAsString());
 	}
 
 }

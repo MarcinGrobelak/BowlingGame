@@ -9,29 +9,35 @@
 	</h:head>  
       
 	<h:body>  
+ 		<h:outputStylesheet name="style.css" library="css"/>
+		
 		<h:form>  
+			<p:outputLabel value="Welcome to bowling, select your roll:" styleClass="label welcomeLabel"/>
+		
 			<p:panel id="buttons">
 				<c:forEach begin="0" end="#{viewBean.possiblePoints}"  varStatus="loop">
 		  				<p:commandButton value="#{loop.index}" action="#{viewBean.roll(loop.index)}" 
+		  								 disabled="#{viewBean.gameOver}"
 		  								 update="buttons gameInfo scoreTable"/>
 				</c:forEach>
 			</p:panel>
 			
-			<h:panelGrid id = "gameInfo" columns = "2" cellpadding = "10" >
+			<h:panelGrid id = "gameInfo" columns = "2" styleClass="label overallLabel">
 				<p:outputLabel for="@next" value="Overall score:"/>
 				<p:outputLabel id="score" value="#{viewBean.getOverallScore()}"/>
 			</h:panelGrid>
 			
 			<p:dataGrid  id="scoreTable" var="frame" value="#{viewBean.frames}"
-						 columns="3" layout="grid">
+						 columns="10" layout="grid">
 						 
-				<p:panel header="Round #{viewBean.frames.indexOf(frame) + 1}" 
-						 style="text-align:center">	
-					<p:outputLabel value="#{frame.firstRoll}" />	
-					<p:outputLabel value="#{frame.secondRollLabel}" />
-					<p:outputLabel value="#{frame.thirdRoll}" 
-								   rendered="#{frame.final}" />
-					<p:outputLabel value="#{frame.score}" />
+				<p:panel header="Round #{viewBean.frames.indexOf(frame) + 1}" >	
+					<div class="roundPanel"> 
+						<p:outputLabel value="#{frame.getFirstRollAsString()}" styleClass="scoreLabel"/>	
+						<p:outputLabel value="#{frame.getSecondRollAsString()}" styleClass="scoreLabel" />
+						<p:outputLabel value="#{frame.getThirdRollAsString()}" styleClass="scoreLabel" 
+									   rendered="#{frame.final and frame.fullPointer}" />
+						<p:outputLabel value="#{frame.score}" styleClass="scoreLabel"/>
+					</div>
 				</p:panel>	 
 			</p:dataGrid >			
 		</h:form>

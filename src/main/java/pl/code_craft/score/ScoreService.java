@@ -22,6 +22,18 @@ public class ScoreService {
 		if (frames.size() >= 2) {
 			Frame previous = frames.get(index - 1);
 
+			if (last.isFinal()) {
+				if (previous.isStrike() && previous.getScore() == null && last.getSecondRoll() != null) {
+					previous.setScore(10 + last.getSumOfRolls());
+					return;
+				}
+
+				if (last.isClosed()) {
+					last.setScore(last.getSumOfRolls());
+					return;
+				}
+			}
+
 			if (frames.size() >= 3) {
 				Frame antepenultimate = frames.get(index - 2);
 
@@ -53,18 +65,6 @@ public class ScoreService {
 
 			if (previous.isSpare() && !last.isFullPointer()) {
 				previous.setScore(10 + last.getFirstRoll());
-				return;
-			}
-
-			if (index == 9) {
-				if (previous.isStrike() && last.isClosed()) {
-					previous.setScore(10 + last.getSumOfRolls());
-				}
-
-				if (last.isClosed()) {
-					last.setScore(last.getSumOfRolls());
-				}
-
 			}
 		}
 	}
