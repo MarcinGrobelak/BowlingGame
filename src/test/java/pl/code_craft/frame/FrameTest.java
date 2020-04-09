@@ -1,5 +1,9 @@
 package pl.code_craft.frame;
 
+/**
+ * @author Marcin Grobelak (code-craft.pl)
+ */
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -171,7 +175,7 @@ class FrameTest {
 	}
 
 	@Test
-	void labelShouldBeXWhenStrike() {
+	void secondRollAsStringShouldReturnXWhenStrike() {
 		// when
 		frame.addRoll(10);
 		// then
@@ -179,7 +183,7 @@ class FrameTest {
 	}
 
 	@Test
-	void labelShouldBeSlashWhenSpare() {
+	void secondRollAsStringShouldReturnSlashWhenSpare() {
 		// when
 		frame.addRoll(5);
 		frame.addRoll(5);
@@ -188,7 +192,7 @@ class FrameTest {
 	}
 
 	@Test
-	void labelShouldBeSecondFrameValueWhenSecondFrameNotNull() {
+	void secondRollAsStringShouldReturnSecondRollValueAfterSecondRoll() {
 		// when
 		frame.addRoll(1);
 		frame.addRoll(2);
@@ -197,9 +201,23 @@ class FrameTest {
 	}
 
 	@Test
-	void labelShouldBeEmptyStringWhenSecondFrameIsNull() {
+	void secondRollAsStrinShouldReturnEmptyStringWhenSecondRollIsNull() {
 		// then
 		assertEquals("", frame.getSecondRollAsString());
+	}
+
+	@Test
+	void firstRollAsStrinShouldReturnEmptyStringWhenFirstRollIsNull() {
+		// then
+		assertEquals("", frame.getFirstRollAsString());
+	}
+
+	@Test
+	void firstRollAsStrinShouldReturnFirstRollValueAfterFirstRoll() {
+		// when
+		frame.addRoll(1);
+		// then
+		assertEquals("1", frame.getFirstRollAsString());
 	}
 
 }

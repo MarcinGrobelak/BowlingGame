@@ -1,5 +1,9 @@
 package pl.code_craft.frame;
 
+/**
+ * @author Marcin Grobelak (code-craft.pl)
+ */
+
 public class FinalFrame extends RegularFrame {
 	private Integer thirdRoll;
 

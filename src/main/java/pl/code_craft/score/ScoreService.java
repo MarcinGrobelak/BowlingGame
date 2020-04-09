@@ -5,9 +5,9 @@ import java.util.List;
 import pl.code_craft.frame.Frame;
 
 /**
- * @author Marcin
- *
+ * @author Marcin Grobelak (code-craft.pl)
  */
+
 public class ScoreService {
 
 	public static void setScore(List<Frame> frames) {

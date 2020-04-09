@@ -15,9 +15,9 @@ import pl.code_craft.frame.RegularFrame;
 import pl.code_craft.score.ScoreService;
 
 /**
- * @author Marcin
- *
+ * @author Marcin Grobelak (code-craft.pl)
  */
+
 @Named
 @ViewScoped
 public class ViewBean implements Serializable {

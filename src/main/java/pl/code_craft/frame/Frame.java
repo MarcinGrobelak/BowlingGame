@@ -1,5 +1,9 @@
 package pl.code_craft.frame;
 
+/**
+ * @author Marcin Grobelak (code-craft.pl)
+ */
+
 public interface Frame {
 	public void addRoll(Integer roll) throws IllegalStateException;
 

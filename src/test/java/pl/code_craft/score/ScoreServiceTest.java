@@ -1,5 +1,9 @@
 package pl.code_craft.score;
 
+/**
+ * @author Marcin Grobelak (code-craft.pl)
+ */
+
 import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

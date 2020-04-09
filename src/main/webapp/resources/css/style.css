@@ -41,6 +41,7 @@ html {
 
 .ui-widget{
 	font-family: 'Nunito';
+	font-size: 2rem;
 }
 .ui-corner-all{
 	 border-radius:0px;

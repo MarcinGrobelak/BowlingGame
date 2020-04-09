@@ -1,9 +1,9 @@
 package pl.code_craft.frame;
 
 /**
- * @author Marcin
- *
+ * @author Marcin Grobelak (code-craft.pl)
  */
+
 public class RegularFrame implements Frame {
 	protected Integer firstRoll;
 	protected Integer secondRoll;
