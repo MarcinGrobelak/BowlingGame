@@ -27,7 +27,7 @@ public class FinalFrame extends RegularFrame {
 
 	@Override
 	public boolean isClosed() {
-		return (!isFullPointer() && super.isClosed() || isFullPointer() && thirdRoll != null);
+		return (!isFullPointer() || isFullPointer() && thirdRoll != null);
 	}
 
 	@Override

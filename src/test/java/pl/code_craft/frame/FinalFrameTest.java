@@ -61,7 +61,7 @@ public class FinalFrameTest {
 	}
 
 	@Test
-	void finalFrameShouldBeClesedAfterSpareAndAnyThirdWasRolled() {
+	void finalFrameShouldBeClosedAfterSpareAndAnyThirdWasRolled() {
 		// when
 		finalFrame.addRoll(7);
 		finalFrame.addRoll(3);
@@ -115,7 +115,7 @@ public class FinalFrameTest {
 	}
 
 	@Test
-	void sumOfRollsShouldBeOFAllRollsAfterThirdRoll() {
+	void sumOfRollsShouldBeSumOfAllRollsAfterThirdRoll() {
 		// when
 		finalFrame.addRoll(5);
 		finalFrame.addRoll(5);
@@ -125,35 +125,37 @@ public class FinalFrameTest {
 	}
 
 	@Test
-	void isFinalShouldBeTrue() {
-		// then
-		assertTrue(finalFrame.isFinal());
-	}
-
-	@Test
-	void nullRollTranslationSholdGiveEmptyString() {
+	void nullRollTranslationSholdBeEmptyString() {
 		// then
 		assertEquals("", finalFrame.getFirstRollAsString());
+		assertEquals("", finalFrame.getSecondRollAsString());
+		assertEquals("", finalFrame.getThirdRollAsString());
 	}
 
 	@Test
-	void tenPointerRollTranslationShuldGiveX() {
+	void tenPointerRollTranslationShuldBeX() {
 		// when
+		finalFrame.addRoll(10);
+		finalFrame.addRoll(10);
 		finalFrame.addRoll(10);
 		// then
 		assertEquals("X", finalFrame.getFirstRollAsString());
+		assertEquals("X", finalFrame.getSecondRollAsString());
+		assertEquals("X", finalFrame.getSecondRollAsString());
 	}
 
 	@Test
-	void otherThanTenRollTranslationShouldGiveRollValue() {
+	void otherThanTenRollTranslationShouldBeRollValue() {
 		// when
-		finalFrame.addRoll(5);
+		finalFrame.addRoll(1);
+		finalFrame.addRoll(2);
 		// then
-		assertEquals("5", finalFrame.getFirstRollAsString());
+		assertEquals("1", finalFrame.getFirstRollAsString());
+		assertEquals("2", finalFrame.getSecondRollAsString());
 	}
 
 	@Test
-	void secondRollSpareTranslationShouldGiveBackSlash() {
+	void secondRollSpareTranslationShouldBeBackSlash() {
 		// when
 		finalFrame.addRoll(5);
 		finalFrame.addRoll(5);

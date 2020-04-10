@@ -1,4 +1,4 @@
-package pl.code_craft.score;
+package pl.code_craft.game;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import pl.code_craft.frame.Frame;
  * @author Marcin Grobelak (code-craft.pl)
  */
 
-public class ScoreService {
+public class ScoreCalculator {
 
 	public static void setScore(List<Frame> frames) {
 

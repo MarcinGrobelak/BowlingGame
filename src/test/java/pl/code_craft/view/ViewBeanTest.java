@@ -1,11 +1,5 @@
 package pl.code_craft.view;
 
-/**
- * @author Marcin Grobelak (code-craft.pl)
- */
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,8 +13,6 @@ import org.jboss.weld.junit5.WeldInitiator;
 import org.jboss.weld.junit5.WeldSetup;
 import org.junit.jupiter.api.Test;
 
-import pl.code_craft.frame.RegularFrame;
-
 @EnableWeld
 public class ViewBeanTest {
 
@@ -31,40 +23,28 @@ public class ViewBeanTest {
 	ViewBean view;
 
 	@Test
-	void varablesAreInitializedAfterCreation() {
+	void gameShouldBeInitializedAfterCreation() {
 		// then
-		assertEquals(10, view.getPossiblePoints());
-		assertFalse(view.isGameOver());
-		assertNotNull(view.getCurrentFrame());
-		assertThat(view.getFrames(), hasSize(1));
+		assertEquals(10, view.getGame().getPointsToScore());
+		assertFalse(view.getGame().isGameOver());
+		assertNotNull(view.getGame().getCurrentFrame());
+		assertEquals(1, view.getGame().getFrames().size());
 	}
 
 	@Test
-	void varablesAreCleanedAftedDestroy() {
-		// given
-		view.getFrames().add(new RegularFrame());
+	void gameShouldBeNullAftedDestroy() {
 		// when
 		view.destroy();
 		// then
-		assertNull(view.getCurrentFrame());
-		assertNull(view.getFrames());
+		assertNull(view.getGame());
 	}
 
 	@Test
-	void overallScoreShouldSummAllFramesScores() {
-		// given
-		generateFrames();
+	void rollSouldPassRollValueToGameHandler() {
+		// when
+		view.roll(5);
 		// then
-		assertEquals(38, view.getOverallScore());
-		assertThat(view.getFrames(), hasSize(3));
-	}
-
-	private void generateFrames() {
-		view.roll(10); // 20
-		view.roll(8);
-		view.roll(2); // 13
-		view.roll(3);
-		view.roll(2); // 5
+		assertEquals(5, view.getGame().getCurrentFrame().getFirstRoll());
 	}
 
 }

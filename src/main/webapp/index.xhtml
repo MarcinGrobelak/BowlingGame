@@ -6,6 +6,7 @@
  
 	<h:head>  
  		<title>Bowling game</title>
+ 		<link rel="shortcut icon" type="image/x-icon" href="#{resource['img/bowling.svg']}"/>
 	</h:head>  
       
 	<h:body>  
@@ -15,22 +16,22 @@
 			<p:outputLabel value="Welcome to bowling, select your roll:" styleClass="label welcomeLabel"/>
 		
 			<p:panel id="buttons">
-				<c:forEach begin="0" end="#{viewBean.possiblePoints}"  varStatus="loop">
-		  				<p:commandButton value="#{loop.index}" action="#{viewBean.roll(loop.index)}" 
-		  								 disabled="#{viewBean.gameOver}"
+				<c:forEach begin="0" end="#{viewBean.game.pointsToScore}"  varStatus="loop">
+		  				<p:commandButton value="#{loop.index}" action="#{viewBean.game.roll(loop.index)}" 
+		  								 disabled="#{viewBean.game.gameOver}"
 		  								 update="buttons gameInfo scoreTable"/>
 				</c:forEach>
 			</p:panel>
 			
 			<h:panelGrid id = "gameInfo" columns = "2" styleClass="label overallLabel">
 				<p:outputLabel for="@next" value="Overall score:"/>
-				<p:outputLabel id="score" value="#{viewBean.getOverallScore()}"/>
+				<p:outputLabel id="score" value="#{viewBean.game.getOverallScore()}"/>
 			</h:panelGrid>
 			
-			<p:dataGrid  id="scoreTable" var="frame" value="#{viewBean.frames}"
+			<p:dataGrid  id="scoreTable" var="frame" value="#{viewBean.game.frames}"
 						 columns="10" layout="grid">
 						 
-				<p:panel header="Round #{viewBean.frames.indexOf(frame) + 1}" >	
+				<p:panel header="Round #{viewBean.game.frames.indexOf(frame) + 1}" >	
 					<div class="roundPanel"> 
 						<p:outputLabel value="#{frame.getFirstRollAsString()}" styleClass="scoreLabel"/>	
 						<p:outputLabel value="#{frame.getSecondRollAsString()}" styleClass="scoreLabel" />

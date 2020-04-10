@@ -23,7 +23,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
-class FrameTest {
+class RegularFrameTest {
 
 	private RegularFrame frame;
 
@@ -41,9 +41,9 @@ class FrameTest {
 	}
 
 	@RepeatedTest(9)
-	void frameIsNotStrikeWhenFirstRollIsLessThanTen(RepetitionInfo repetitionInfo) {
+	void frameIsNotStrikeWhenFirstRollIsLessThanTen(RepetitionInfo repetition) {
 		// when
-		frame.addRoll(repetitionInfo.getCurrentRepetition());
+		frame.addRoll(repetition.getCurrentRepetition());
 		// then
 		assertFalse(frame.isStrike());
 	}
@@ -85,7 +85,7 @@ class FrameTest {
 	}
 
 	@Test
-	void secondRollIsNotNullAfterSecondAddCallOnNonStrike() {
+	void secondRollIsNotNullAfterSecondAddRollCallOnNonStrike() {
 		// when
 		frame.addRoll(1);
 		frame.addRoll(2);
@@ -150,13 +150,14 @@ class FrameTest {
 	}
 
 	@Test
-	void sumeOfRollsReturnsNullIfFirstRollIsNull() {
+	void sumeOfRollsShouldBeNullIfFirstRollIsNull() {
+		// then
 		assertNull(frame.getFirstRoll());
 		assertNull(frame.getSumOfRolls());
 	}
 
 	@Test
-	void sumeOfRollsReturnsNullIfSecondRollIsNull() {
+	void sumeOfRollsShouldBeNullIfSecondRollIsNull() {
 		// when
 		frame.addRoll(1);
 		// then
@@ -165,7 +166,7 @@ class FrameTest {
 	}
 
 	@Test
-	void sumeOfRollsReturnsSumIfBothRollsAreNotNull() {
+	void sumeOfRollsShouldBeSumValueIfBothRollsAreNotNull() {
 		// when
 		frame.addRoll(1);
 		frame.addRoll(2);
@@ -175,7 +176,7 @@ class FrameTest {
 	}
 
 	@Test
-	void secondRollAsStringShouldReturnXWhenStrike() {
+	void secondRollAsStringShouldBeXWhenStrike() {
 		// when
 		frame.addRoll(10);
 		// then
@@ -183,7 +184,7 @@ class FrameTest {
 	}
 
 	@Test
-	void secondRollAsStringShouldReturnSlashWhenSpare() {
+	void secondRollAsStringShouldBeSlashWhenSpare() {
 		// when
 		frame.addRoll(5);
 		frame.addRoll(5);
@@ -192,7 +193,7 @@ class FrameTest {
 	}
 
 	@Test
-	void secondRollAsStringShouldReturnSecondRollValueAfterSecondRoll() {
+	void secondRollAsStringShouldBeSecondRollValueIfNotFullPointer() {
 		// when
 		frame.addRoll(1);
 		frame.addRoll(2);
@@ -201,19 +202,19 @@ class FrameTest {
 	}
 
 	@Test
-	void secondRollAsStrinShouldReturnEmptyStringWhenSecondRollIsNull() {
+	void secondRollAsStrinShouldBeEmptyStringWhenSecondRollIsNull() {
 		// then
 		assertEquals("", frame.getSecondRollAsString());
 	}
 
 	@Test
-	void firstRollAsStrinShouldReturnEmptyStringWhenFirstRollIsNull() {
+	void firstRollAsStrinShouldBeEmptyStringWhenFirstRollIsNull() {
 		// then
 		assertEquals("", frame.getFirstRollAsString());
 	}
 
 	@Test
-	void firstRollAsStrinShouldReturnFirstRollValueAfterFirstRoll() {
+	void firstRollAsStrinShouldBeFirstRollValueAfterFirstRoll() {
 		// when
 		frame.addRoll(1);
 		// then

@@ -16,7 +16,7 @@ public class RegularFrame implements Frame {
 
 	@Override
 	public boolean isSpare() {
-		return (firstRoll != null && secondRoll != null && firstRoll + secondRoll == 10);
+		return (getSumOfRolls() != null && getSumOfRolls() == 10);
 	}
 
 	@Override
