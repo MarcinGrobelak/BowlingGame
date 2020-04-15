@@ -80,6 +80,28 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M4</version>			
 			</plugin>
+			<plugin>
+				<groupId>fish.payara.maven.plugins</groupId>
+				<artifactId>payara-micro-maven-plugin</artifactId>
+				<version>1.0.7</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>start</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<payaraVersion>5.201</payaraVersion>
+					<deployWar>true</deployWar>
+					<commandLineOptions>
+						<option>
+							<key>--port</key>
+							<value>8095</value>
+						</option>                       
+					</commandLineOptions>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>

@@ -80,6 +80,14 @@ public class FinalFrameTest {
 	}
 
 	@Test
+	void finalFrameShouldNotBeClosedAfterFirstNonFullPointerRolls() {
+		// when
+		finalFrame.addRoll(1);
+		// then
+		assertFalse(finalFrame.isClosed());
+	}
+
+	@Test
 	void finalFrameShouldNotBeClosedAfterStrikeWithoutThirdRoll() {
 		// when
 		finalFrame.addRoll(10);
