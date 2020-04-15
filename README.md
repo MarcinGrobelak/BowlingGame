@@ -19,7 +19,7 @@ Project is created with:<br />
 * **Hamcrest** version: 2.2 *(sample of matchers usage in GameHandlerTest class)*<br />
 * **Maven** version: 3.6.0
 
-###Running the tests
+### Running the tests
 Maven will launch test automaticly during build using **junit-platform-runner** and **maven-surefire-plugin**.
 
 ### Deployment
