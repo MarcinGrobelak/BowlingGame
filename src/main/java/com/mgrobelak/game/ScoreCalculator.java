@@ -1,11 +1,11 @@
-package pl.code_craft.game;
+package com.mgrobelak.game;
 
 import java.util.List;
 
-import pl.code_craft.frame.Frame;
+import com.mgrobelak.frame.Frame;
 
 /**
- * @author Marcin Grobelak (code-craft.pl)
+ * @author Marcin Grobelak
  */
 
 public class ScoreCalculator {

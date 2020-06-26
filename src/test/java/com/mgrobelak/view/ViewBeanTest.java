@@ -1,4 +1,8 @@
-package pl.code_craft.view;
+package com.mgrobelak.view;
+
+/**
+ * @author Marcin Grobelak
+ */
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;

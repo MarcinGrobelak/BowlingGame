@@ -1,7 +1,7 @@
-package pl.code_craft.game;
+package com.mgrobelak.game;
 
 /**
- * @author Marcin Grobelak (code-craft.pl)
+ * @author Marcin Grobelak
  */
 
 import static org.junit.Assert.assertNull;
@@ -13,9 +13,9 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import pl.code_craft.frame.FinalFrame;
-import pl.code_craft.frame.Frame;
-import pl.code_craft.frame.RegularFrame;
+import com.mgrobelak.frame.FinalFrame;
+import com.mgrobelak.frame.Frame;
+import com.mgrobelak.frame.RegularFrame;
 
 public class ScoreCalculatorTest {
 	private List<Frame> frames;

@@ -1,7 +1,7 @@
-package pl.code_craft.frame;
+package com.mgrobelak.frame;
 
 /**
- * @author Marcin Grobelak (code-craft.pl)
+ * @author Marcin Grobelak
  */
 
 public class FinalFrame extends RegularFrame {

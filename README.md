@@ -29,4 +29,4 @@ If you do not want to install an application server, you can use Payara-micro-ma
 mvn clean package payara-micro:start / stop
 ```
 This command will download lightweight Payara Micro to your Maven repository and launch the application on top of Payara.<br />
-After this you can acces application at: http://localhost:8095/Bowling/ <br /><br />
+After this you can access application at: http://localhost:8095/Bowling/ <br /><br />

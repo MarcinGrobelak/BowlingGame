@@ -1,15 +1,15 @@
-package pl.code_craft.game;
+package com.mgrobelak.game;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import pl.code_craft.frame.FinalFrame;
-import pl.code_craft.frame.Frame;
-import pl.code_craft.frame.RegularFrame;
+import com.mgrobelak.frame.FinalFrame;
+import com.mgrobelak.frame.Frame;
+import com.mgrobelak.frame.RegularFrame;
 
 /**
- * @author Marcin Grobelak (code-craft.pl)
+ * @author Marcin Grobelak
  */
 
 public class GameHandler implements Serializable {

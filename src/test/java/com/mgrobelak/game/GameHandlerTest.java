@@ -1,4 +1,8 @@
-package pl.code_craft.game;
+package com.mgrobelak.game;
+
+/**
+ * @author Marcin Grobelak
+ */
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.instanceOf;
@@ -13,8 +17,8 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.RepetitionInfo;
 import org.junit.jupiter.api.Test;
 
-import pl.code_craft.frame.FinalFrame;
-import pl.code_craft.frame.RegularFrame;
+import com.mgrobelak.frame.FinalFrame;
+import com.mgrobelak.frame.RegularFrame;
 
 public class GameHandlerTest {
 

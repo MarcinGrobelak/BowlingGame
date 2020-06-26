@@ -1,4 +1,4 @@
-package pl.code_craft.view;
+package com.mgrobelak.view;
 
 import java.io.Serializable;
 
@@ -7,10 +7,10 @@ import javax.annotation.PreDestroy;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-import pl.code_craft.game.GameHandler;
+import com.mgrobelak.game.GameHandler;
 
 /**
- * @author Marcin Grobelak (code-craft.pl)
+ * @author Marcin Grobelak
  */
 
 @Named
